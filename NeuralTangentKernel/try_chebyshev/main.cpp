@@ -7,7 +7,7 @@ int main() {
     //BOOT_MAX = TOT_MAX;
 
     fs::path folderPath = "fakedata/";
-    fs::path stringInput = "bootstrap/bootstrap1k_secondofile.dat";//"data/corr.txt";
+    fs::path stringInput = "bootstrap/decCheb_bootstrap1k_mean_secondofile.dat";//"data/corr.txt";
 
     TOT_MAX = count_filefolder(folderPath);
 std::cout << TOT_MAX << "\n";
@@ -31,7 +31,7 @@ std::cout << TOT_MAX << "\n";
 
     char foutput[80];
 
-    std::sprintf(foutput, "data_secntk20.dat");
+    std::sprintf(foutput, "temp.dat");
 
     FILE * net;
     net = fopen(foutput , "wt");
@@ -42,7 +42,7 @@ std::cout << TOT_MAX << "\n";
 
     std::cout << "END DATA COLLECTION\n";
 
-
+/*
     int max_boot_harm = 20;
     cx_dvec mean_out_test = zeros<cx_dvec>(out_test.n_elem), err_out_test = zeros<cx_dvec>(out_test.n_elem);
 //std::cout << "sdasda\n";
@@ -67,8 +67,8 @@ std::cout << TOT_MAX << "\n";
         fprintf(test, "%.9e		%.9e\n", int_x(i), real(out_test(i)));
     }
 
+*/
 
-/*
     outputNTK result = distribNTKgp(input_test, input_train, out_train, eta, n_layer, sigma_w, sigma_b, n0);
 
     //outputNTK result = distribNNGP(input_test, input_train, out_train, eta, n_layer, sigma_w, sigma_b, n0);
@@ -79,10 +79,10 @@ std::cout << TOT_MAX << "\n";
 
     for(int i=0; i<num_samples; ++i){
     //for(int i=0; i<num_samples/3; ++i){
-        fprintf(net, "%.9e		%.9e\n", int_x(i), real(result.mean(i)));
-        fprintf(test, "%.9e		%.9e\n", int_x(i), real(out_test(i)));
+        fprintf(net, "%.9e\n", real(result.mean(i)));
+        //fprintf(test, "%.9e		%.9e\n", int_x(i), real(out_test(i)));
     }
-*/
+
 
     return 0;
 

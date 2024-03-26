@@ -5,8 +5,8 @@
 
 void train_and_test_data(int& time_max, int& num_samples, cx_dmat& input_train, cx_dmat& out_train, cx_dvec& input_test, cx_dvec& out_test, const fs::path folderPath){
 
-    time_max = 100;
-    num_samples = 10000;
+    time_max = 13;
+    num_samples = 31;
     const int Ntotdata = time_max + num_samples;
 
     cx_dmat input(TOT_MAX, time_max);

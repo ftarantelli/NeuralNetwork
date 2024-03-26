@@ -3,6 +3,9 @@
 #include <armadillo>
 
 #include <boost/math/special_functions/chebyshev.hpp>
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 using namespace arma;
 using namespace boost::math;
@@ -21,8 +24,8 @@ double approximatedFunction(const dvec& coefficients, double xvar, int N) {
 }
 
 int main() {
-    int N = 50; // Grado massimo della scomposizione
-    double x; // Punto in cui calcolare f(x)
+    int N = 30; // Grado massimo della scomposizione
+    //double x; // Punto in cui calcolare f(x)
 
     dvec coefficients(N + 1); // Coefficienti a_n
 
@@ -34,12 +37,13 @@ int main() {
 		coefficients(iiv) = value;
 		++ iiv;
 	}
+std::cout << coefficients;
+	int num_samples = 12;
+	dvec int_x = linspace(1, 12, num_samples);
+	for(int i=0; i < num_samples; ++i){
+        double result = approximatedFunction(coefficients, int_x(i), N);
 
-	for(int i=1; i < 11; ++i){
-        x = double(i);
-        double result = approximatedFunction(coefficients, x, N);
-
-        std::cout << "f(" << x << ") = " << result << std::endl;
+        std::cout << int_x(i) << "\t\t" << result << std::endl;
     }
 	input_file.close();
     return 0;
